@@ -33,6 +33,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(","
 # Application definition
 
 INSTALLED_APPS = [
+    "newapp",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -118,5 +119,6 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6370/0")
+# CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6370/0")
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "amqp://guest:guest@rabbitmq:5672/")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BACKEND", "redis://redis:6370/0")
